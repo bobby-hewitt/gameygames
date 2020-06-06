@@ -25,7 +25,7 @@ const Song = require('./song')
 const Movie = require('./movie')
 
 io.on('connection', function(socket){  	
-  	console.log('socket connected', socket.id)
+  	
   	socket.on('disconnect', disconnect.bind(this, socket));
   	socket.on('host-joined', Connection.hostConnected.bind(this, socket)) 	
   	socket.on('player-joined', Connection.playerConnected.bind(this, socket)) 
@@ -74,10 +74,12 @@ app.get('*', (req, res) => {
 server.listen(PORT);
 
 function disconnect(socket){
-	console.log('disconnected', socket.id)
+
+
+	
 	Rooms.findOne({long: socket.id}, (err, room) => {
 		if (room){
-			console.log('host gone')
+			
 			socket.broadcast.to(room.long).emit('host-disconnected')
       room.remove()
       Rooms.deleteMany({short: room.short}, (err, res) => {
