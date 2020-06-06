@@ -17,7 +17,7 @@ mongoose.connection.on('error', () => console.info('Error: Could not connect to 
 mongoose.connection.on('connected', () =>  console.info('Successfully connected to the database'))
 
 const Rooms = require('./Models/room')
-const Connection = require('./Connection')
+const Connection = require('./connection')
 const GeneralPlayer = require('./General/player')
 const GeneralHost = require('./General/host')
 const SearchPlayer = require('./Search/player')
